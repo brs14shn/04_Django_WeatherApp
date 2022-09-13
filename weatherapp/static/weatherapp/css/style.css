@@ -37,10 +37,10 @@ body{
 
 input[type="text"]{
    width:80%;
-   padding: 4px 6px;
+   padding: 10px 4px;
 }
 input[type="submit"]{
-   padding: 4px 6px;
+   padding: 10px 4px;
    background-color: red;
    color:white;
    border-radius: 10px;
