@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'weatherapp/css/style.css' %}">
     <title>WeatherApp</title>
 </head>
 <body>
@@ -15,23 +17,37 @@
     {% endfor %}
         
     {% endif %}
-    <hr>
     <br>
+   
 
 
 
     <form action="" method="post">
         {% csrf_token %}
-        <input type="text" name="name">
-        <input type="submit" value="Add city">
+        <input type="text" name="name" placeholder="Enter a city">
+        <input type="submit" value="Add city" >
     </form>
-    <br><hr>
 
-    {{city}} <br>
-    {{temp}} <br>
-    <img src=" http://openweathermap.org/img/wn/{{icon}}@2x.png" alt="">
-    {{icon}} <br>
-    {{desc}} <br>
+
+    {% for i in city_data  %}
+    <div class="card">
+    <div class="card-item">
+        {{i.city}} <br>
+        {{i.temp}}&#8451 <br>
+        <img src="http://openweathermap.org/img/wn/{{i.icon}}@2x.png" alt=""> <br>
+        {{i.desc}} <br>
+        <button><a href="{% url 'delete' i.city.id %}">Delete</a></button>
+        
+
+
+    </div>
+   
+     {% endfor %}
+
+    </div>
+    
+
+    <script src="{% static 'weatherapp/js/timeout.js' %}"></script>
    
 </body>
 </html>
